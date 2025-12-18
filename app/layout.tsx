@@ -6,7 +6,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Minute Cryptic - Daily Cryptic Crossword Puzzles",
+  title: "Abbie Cryptic - Daily Cryptic Crossword Puzzles",
   description: "Solve daily cryptic crossword clues and challenge yourself",
 };
 

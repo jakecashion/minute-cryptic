@@ -1,4 +1,4 @@
-# Minute Cryptic 🧩
+# Abbie Cryptic 🧩
 
 A daily cryptic crossword puzzle platform built as a thoughtful gift for puzzle enthusiasts.
 
@@ -31,7 +31,7 @@ A daily cryptic crossword puzzle platform built as a thoughtful gift for puzzle 
 1. Clone the repository:
 ```bash
 git clone <your-repo-url>
-cd minute-cryptic
+cd abbie-cryptic
 ```
 
 2. Install dependencies:

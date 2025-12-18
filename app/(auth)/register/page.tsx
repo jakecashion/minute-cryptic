@@ -73,7 +73,7 @@ export default function RegisterPage() {
         showToast("Registration successful! Please log in.", "success")
         router.push("/login")
       } else {
-        showToast("Welcome to Minute Cryptic!", "success")
+        showToast("Welcome to Abbie Cryptic!", "success")
         router.push("/solve")
         router.refresh()
       }

@@ -13,7 +13,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-blue-600">
-            Minute Cryptic
+            Abbie Cryptic
           </Link>
 
           {/* Navigation */}

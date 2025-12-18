@@ -5,14 +5,14 @@ export default function AboutPage() {
   return (
     <Container>
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">About Minute Cryptic</h1>
+        <h1 className="text-4xl font-bold mb-8">About Abbie Cryptic</h1>
 
         <div className="space-y-6">
           <Card>
             <CardContent className="py-6">
               <h2 className="text-2xl font-semibold mb-4">A Gift for Puzzle Lovers</h2>
               <p className="text-gray-700 mb-4">
-                Minute Cryptic was created as a thoughtful gift for a small group of cryptic
+                Abbie Cryptic was created as a thoughtful gift for a small group of cryptic
                 crossword enthusiasts. This isn't a commercial platform - it's a labor of love
                 designed to bring daily puzzle-solving joy to a close-knit community.
               </p>

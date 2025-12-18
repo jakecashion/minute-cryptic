@@ -9,7 +9,7 @@ export default function Home() {
         {/* Hero Section */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
-            Minute Cryptic
+            Abbie Cryptic
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8">
             Your daily cryptic crossword puzzle challenge

@@ -1,4 +1,4 @@
-// This is your Prisma schema file for the Minute Cryptic gift project
+// This is your Prisma schema file for the Abbie Cryptic gift project
 // Simplified SQLite database for 10-25 users
 
 datasource db {
