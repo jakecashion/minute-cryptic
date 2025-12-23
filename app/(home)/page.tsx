@@ -41,7 +41,7 @@ export default function Home() {
             </div>
 
             <p className="w-full min-h-[20px] text-center font-sans font-normal text-sm leading-5">
-              23 December, 2025 · By Member: Jack Porter
+              23 December, 2025 · By Member: Jake Cashion
             </p>
           </div>
         </div>
