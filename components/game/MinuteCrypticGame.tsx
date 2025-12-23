@@ -167,14 +167,14 @@ export default function MinuteCrypticGame() {
       <div className="flex-1 overflow-y-auto p-4 pb-64 no-scrollbar">
 
         {/* The Clue - Centerpiece */}
-        <div className="mb-12 text-center px-2">
-          <p className="text-2xl md:text-3xl font-serif font-bold text-brand-dark leading-snug">
+        <div className="mb-6 text-center px-2">
+          <p className="text-xl md:text-2xl font-serif font-bold text-brand-dark leading-snug">
             {puzzle.clue}
           </p>
         </div>
 
         {/* Letter Boxes */}
-        <div className="flex flex-wrap justify-center gap-1.5 mb-8">
+        <div className="flex flex-wrap justify-center gap-1.5 mb-6">
           {currentLetters.map((letter, idx) => {
             const isSelected = idx === currentPosition;
             // Add gap after first word if there are two words
@@ -200,16 +200,16 @@ export default function MinuteCrypticGame() {
         </div>
 
         {/* Action Buttons - Hints / Check */}
-        <div className="flex justify-center gap-3 mb-8">
+        <div className="flex justify-center gap-3 mb-6">
           <button
             onClick={handleHint}
-            className="px-6 py-2 bg-white hover:bg-gray-50 text-black font-bold text-sm rounded-lg border-2 border-black/10 transition-all active:scale-95"
+            className="px-8 py-3 bg-white hover:bg-gray-50 text-black font-bold text-base rounded-lg border-2 border-black/10 transition-all active:scale-95"
           >
             HINT
           </button>
           <button
             onClick={handleCheck}
-            className="px-8 py-2 bg-brand-yellow text-black font-black text-sm rounded-lg border-2 border-black shadow-neobrutalist-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:scale-95 transition-all"
+            className="px-10 py-3 bg-brand-yellow text-black font-black text-base rounded-lg border-2 border-black shadow-neobrutalist-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:scale-95 transition-all"
           >
             CHECK
           </button>

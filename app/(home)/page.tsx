@@ -23,16 +23,16 @@ export default function Home() {
             </h2>
 
             <div className="w-full min-h-[64px] flex items-center justify-center">
-              <p className="text-center font-serif font-normal text-2xl leading-8">
+              <p className="text-center font-serif font-normal text-xl md:text-2xl leading-7 md:leading-8">
                 Perhaps peace offering confused with danger to italian locals? (5,6)
               </p>
             </div>
 
             <div className="w-full pt-4">
               <Link href="/solve" className="block">
-                <button className="min-h-[48px] font-bold focus:outline-none flex items-center justify-center font-serif border-[3px] border-black rounded-full transition-all duration-300 active:opacity-50 hover:scale-105 shadow-[3px_3px_0px_0px_black] bg-brand-purple w-auto mx-auto px-14">
+                <button className="min-h-[56px] font-bold focus:outline-none flex items-center justify-center font-serif border-[3px] border-black rounded-full transition-all duration-300 active:opacity-50 hover:scale-105 shadow-[3px_3px_0px_0px_black] bg-brand-purple w-auto mx-auto px-16">
                   <div className="relative min-w-0 flex">
-                    <p className="text-black text-center -translate-y-[2px] p-[0.14em] text-xl">
+                    <p className="text-black text-center -translate-y-[2px] p-[0.14em] text-2xl">
                       play
                     </p>
                   </div>
