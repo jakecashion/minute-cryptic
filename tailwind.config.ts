@@ -19,6 +19,7 @@ const config: Config = {
           blue: "#B8C9E8",
           yellow: "#FFE600", // Brighter yellow for buttons
           pink: "#FFB6C1",   // Soft pink for selections
+          purple: "#D8B5FF", // Purple for buttons
           dark: "#1A1A1A",   // Softer black for text
         }
       },
