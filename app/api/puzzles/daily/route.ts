@@ -9,14 +9,21 @@ export async function GET() {
   try {
     const session = await getServerSession(authOptions)
 
-    // Get today's date at midnight
+    // Get today's date at midnight in UTC
     const today = new Date()
-    today.setHours(0, 0, 0, 0)
+    today.setUTCHours(0, 0, 0, 0)
 
-    // Find today's puzzle
+    // Get tomorrow's date to create a range
+    const tomorrow = new Date(today)
+    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1)
+
+    // Find today's puzzle using date range
     const puzzle = await prisma.puzzle.findFirst({
       where: {
-        publishDate: today,
+        publishDate: {
+          gte: today,
+          lt: tomorrow
+        },
         isActive: true
       }
     })
