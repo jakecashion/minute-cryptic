@@ -149,13 +149,6 @@ export default function MinuteCrypticGame() {
     )
   }
 
-  const date = new Date(puzzle.publishDate)
-  const formattedDate = date.toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  })
-
   // Parse clue to get word lengths
   const match = puzzle.clue.match(/\((\d+)(?:,\s*(\d+))?\)/)
   const word1Length = match ? parseInt(match[1]) : currentLetters.length
@@ -172,13 +165,6 @@ export default function MinuteCrypticGame() {
 
       {/* Scrollable Content Area */}
       <div className="flex-1 overflow-y-auto p-4 pb-64 no-scrollbar">
-
-        {/* Date / Author Pill */}
-        <div className="flex justify-center mb-6">
-          <span className="bg-white/50 px-4 py-1 rounded-full text-xs font-bold text-brand-dark border border-black/5">
-            {formattedDate} • By Jack Porter
-          </span>
-        </div>
 
         {/* The Clue - Centerpiece */}
         <div className="mb-12 text-center px-2">
