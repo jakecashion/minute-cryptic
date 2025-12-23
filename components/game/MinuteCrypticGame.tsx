@@ -198,7 +198,7 @@ export default function MinuteCrypticGame() {
                 key={idx}
                 onClick={() => setCurrentPosition(idx)}
                 className={`
-                  w-10 h-10 md:w-12 md:h-12
+                  w-11 h-12 md:w-12 md:h-14
                   border-2 ${isSelected ? 'border-black' : 'border-black/20'}
                   rounded-lg flex items-center justify-center
                   text-2xl font-bold font-sans transition-all duration-100
@@ -217,13 +217,13 @@ export default function MinuteCrypticGame() {
         <div className="flex justify-center gap-3 mb-8">
           <button
             onClick={handleHint}
-            className="px-6 py-2 bg-white hover:bg-gray-50 text-black font-bold text-sm rounded-lg border-2 border-black/10 transition-colors"
+            className="px-6 py-2 bg-white hover:bg-gray-50 text-black font-bold text-sm rounded-lg border-2 border-black/10 transition-all active:scale-95"
           >
             HINT
           </button>
           <button
             onClick={handleCheck}
-            className="px-8 py-2 bg-brand-yellow text-black font-black text-sm rounded-lg border-2 border-black shadow-neobrutalist-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
+            className="px-8 py-2 bg-brand-yellow text-black font-black text-sm rounded-lg border-2 border-black shadow-neobrutalist-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:scale-95 transition-all"
           >
             CHECK
           </button>
@@ -233,9 +233,12 @@ export default function MinuteCrypticGame() {
       {/* Explanation (if solved) */}
       {showExplanation && explanation && (
         <div className="mx-4 mb-8">
-          <div className="bg-white border-2 border-black rounded-2xl p-6 shadow-neobrutalist">
-            <h3 className="font-bold text-lg mb-2 text-brand-dark">Explanation:</h3>
-            <p className="text-gray-800 font-serif">{explanation}</p>
+          <div className="bg-brand-dark border-2 border-black rounded-2xl p-6 shadow-neobrutalist">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-1 h-6 bg-brand-yellow rounded-full"></div>
+              <h3 className="font-black text-lg text-white">Explanation</h3>
+            </div>
+            <p className="text-gray-200 font-serif leading-relaxed">{explanation}</p>
           </div>
         </div>
       )}
@@ -249,7 +252,7 @@ export default function MinuteCrypticGame() {
                 <button
                   key={key}
                   onClick={() => handleKeyPress(key)}
-                  className="w-8 h-12 flex-1 bg-white rounded-[4px] shadow-sm text-lg font-bold text-brand-dark active:bg-gray-200 transition-colors"
+                  className="w-8 h-12 flex-1 bg-white rounded-[4px] shadow-[0_1px_0_rgba(0,0,0,0.1)] text-lg font-bold text-brand-dark active:bg-gray-200 active:scale-95 transition-all"
                 >
                   {key}
                 </button>
@@ -257,7 +260,7 @@ export default function MinuteCrypticGame() {
               {rowIdx === 2 && (
                 <button
                   onClick={handleBackspace}
-                  className="w-10 flex items-center justify-center bg-black/10 rounded-[4px] text-brand-dark font-bold active:bg-black/20"
+                  className="w-10 flex items-center justify-center bg-black/10 rounded-[4px] shadow-[0_1px_0_rgba(0,0,0,0.1)] text-brand-dark font-bold active:bg-black/20 active:scale-95 transition-all"
                 >
                   ⌫
                 </button>

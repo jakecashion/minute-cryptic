@@ -1,17 +1,14 @@
+/* Import Minute Cryptic style fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
-
 :root {
-  /* Minute Cryptic Style Palette */
-  --background: #B8C9E8; /* The signature periwinkle blue */
+  /* Signature Palette */
+  --background: #B8C9E8; /* Periwinkle Blue */
   --foreground: #171717;
-  --card: #ffffff;
-  --primary: #171717;
-  --primary-foreground: #ffffff;
 }
 
 body {
@@ -21,13 +18,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Utilities for the "Chunky" look */
+/* Utilities for the "Sticker" look */
 @layer utilities {
-  .text-shadow-sm {
-    text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
-  }
-
-  /* Hide scrollbar for clean mobile look */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

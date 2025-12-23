@@ -7,7 +7,7 @@ export default function Home() {
 
         {/* Main Brand Area */}
         <div className="space-y-2">
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight text-brand-dark transform -rotate-2">
+          <h1 className="text-5xl md:text-6xl font-black tracking-tight text-brand-dark transform -rotate-1">
             Abbie<br/>Cryptic
           </h1>
           <p className="text-xl font-serif italic text-gray-800">
@@ -16,7 +16,7 @@ export default function Home() {
         </div>
 
         {/* The "Daily" Card */}
-        <div className="bg-white border-4 border-black rounded-[2rem] p-8 shadow-neobrutalist transform transition-transform hover:-translate-y-1">
+        <div className="bg-white border-4 border-black rounded-[2.5rem] p-8 shadow-neobrutalist transform transition-transform hover:-translate-y-1">
           <div className="flex justify-between items-center mb-6 border-b-2 border-gray-100 pb-4">
             <span className="font-bold text-gray-400 uppercase tracking-wider text-xs">Daily Puzzle</span>
             <span className="font-bold text-brand-dark bg-gray-100 px-3 py-1 rounded-full text-xs">Dec 23</span>
@@ -35,8 +35,8 @@ export default function Home() {
 
         {/* Footer Links */}
         <div className="flex gap-6 justify-center text-brand-dark font-bold text-sm uppercase tracking-widest opacity-60">
-          <Link href="/guide" className="hover:opacity-100 transition-opacity">How to play</Link>
-          <Link href="/us" className="hover:opacity-100 transition-opacity">About Us</Link>
+          <Link href="/guide" className="hover:opacity-100 transition-opacity border-b-2 border-transparent hover:border-brand-dark">How to play</Link>
+          <Link href="/us" className="hover:opacity-100 transition-opacity border-b-2 border-transparent hover:border-brand-dark">About Us</Link>
         </div>
       </div>
     </div>
