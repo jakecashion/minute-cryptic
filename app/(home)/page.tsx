@@ -16,21 +16,34 @@ export default function Home() {
         </div>
 
         {/* The "Daily" Card */}
-        <div className="bg-white border-4 border-black rounded-[2.5rem] p-6 shadow-neobrutalist transform transition-transform hover:-translate-y-1">
-          <div className="flex justify-between items-center mb-6 pb-4 border-b-2 border-gray-200">
-            <span className="font-bold text-gray-400 uppercase tracking-wider text-xs">Daily Puzzle</span>
-            <span className="font-bold text-brand-dark bg-gray-100 px-3 py-1 rounded-full text-xs">Dec 23</span>
+        <div className="w-full p-6 bg-white border-4 border-black rounded-2xl shadow-neobrutalist">
+          <div className="flex flex-col gap-4">
+            <h2 className="w-full text-center font-sans font-extrabold text-2xl leading-8">
+              Today's clue
+            </h2>
+
+            <div className="w-full min-h-[64px] flex items-center justify-center">
+              <p className="text-center font-serif font-normal text-2xl leading-8">
+                Perhaps peace offering confused with danger to italian locals? (5,6)
+              </p>
+            </div>
+
+            <div className="w-full pt-4">
+              <Link href="/solve" className="block">
+                <button className="min-h-[48px] font-bold focus:outline-none flex items-center justify-center font-serif border-[3px] border-black rounded-full transition-all duration-300 active:opacity-50 hover:scale-105 shadow-[3px_3px_0px_0px_black] bg-brand-purple w-auto mx-auto px-14">
+                  <div className="relative min-w-0 flex">
+                    <p className="text-black text-center -translate-y-[2px] p-[0.14em] text-xl">
+                      play
+                    </p>
+                  </div>
+                </button>
+              </Link>
+            </div>
+
+            <p className="w-full min-h-[20px] text-center font-sans font-normal text-sm leading-5">
+              23 December, 2025 · By Member: Jack Porter
+            </p>
           </div>
-
-          <h2 className="text-2xl font-serif font-bold text-brand-dark mb-6 leading-relaxed">
-            Ready to solve today's hidden meaning?
-          </h2>
-
-          <Link href="/solve" className="block">
-            <button className="w-full bg-brand-purple border-2 border-black text-black font-black text-xl py-4 rounded-xl shadow-neobrutalist-sm hover:shadow-neobrutalist hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all active:shadow-none active:translate-x-0 active:translate-y-0">
-              PLAY NOW
-            </button>
-          </Link>
         </div>
 
         {/* Footer Links */}
