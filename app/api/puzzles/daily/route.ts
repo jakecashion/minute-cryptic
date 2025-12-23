@@ -9,23 +9,25 @@ export async function GET() {
   try {
     const session = await getServerSession(authOptions)
 
-    // Get today's date at midnight in UTC
-    const today = new Date()
-    today.setUTCHours(0, 0, 0, 0)
-
-    // Get tomorrow's date to create a range
-    const tomorrow = new Date(today)
-    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1)
-
-    // Find today's puzzle using date range
-    const puzzle = await prisma.puzzle.findFirst({
+    // Get all active puzzles and find today's in JavaScript
+    // This is more reliable with SQLite date handling
+    const allPuzzles = await prisma.puzzle.findMany({
       where: {
-        publishDate: {
-          gte: today,
-          lt: tomorrow
-        },
         isActive: true
+      },
+      orderBy: {
+        publishDate: 'desc'
       }
+    })
+
+    // Get today's date string in YYYY-MM-DD format
+    const today = new Date()
+    const todayStr = today.toISOString().split('T')[0]
+
+    // Find puzzle that matches today's date
+    const puzzle = allPuzzles.find(p => {
+      const puzzleDate = new Date(p.publishDate).toISOString().split('T')[0]
+      return puzzleDate === todayStr
     })
 
     if (!puzzle) {
