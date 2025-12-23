@@ -168,140 +168,88 @@ export default function MinuteCrypticGame() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#B8C9E8] pb-4">
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-4">
-        <button
-          onClick={() => router.push('/')}
-          className="p-2 hover:bg-white/20 rounded-lg transition-colors"
-        >
-          <ArrowLeft className="w-6 h-6 text-gray-800" />
-        </button>
+    <div className="flex flex-col min-h-[calc(100vh-64px)] max-w-md mx-auto relative pb-safe">
 
-        <div className="text-center">
-          <div className="font-semibold text-gray-900">{formattedDate}</div>
-          <div className="text-sm text-gray-700">By Member: Jack Porter</div>
+      {/* Scrollable Content Area */}
+      <div className="flex-1 overflow-y-auto p-4 pb-64 no-scrollbar">
+
+        {/* Date / Author Pill */}
+        <div className="flex justify-center mb-6">
+          <span className="bg-white/50 px-4 py-1 rounded-full text-xs font-bold text-brand-dark border border-black/5">
+            {formattedDate} • By Jack Porter
+          </span>
         </div>
 
-        <div className="flex gap-2">
-          <button className="p-2 hover:bg-white/20 rounded-lg transition-colors">
-            <Info className="w-6 h-6 text-gray-800" />
-          </button>
-          <button className="p-2 hover:bg-white/20 rounded-lg transition-colors">
-            <Book className="w-6 h-6 text-gray-800" />
-          </button>
-        </div>
-      </div>
-
-      {/* Clue Card */}
-      <div className="mx-4 mt-2 mb-8">
-        <div className="bg-white rounded-2xl p-6 shadow-lg">
-          <p className="text-xl md:text-2xl font-medium text-gray-900">
+        {/* The Clue - Centerpiece */}
+        <div className="mb-12 text-center px-2">
+          <p className="text-2xl md:text-3xl font-serif font-bold text-brand-dark leading-snug">
             {puzzle.clue}
           </p>
         </div>
-      </div>
 
-      {/* Letter Boxes */}
-      <div className="flex flex-col items-center gap-3 mb-8">
-        {word2Length > 0 ? (
-          <>
-            {/* First Word */}
-            <div className="flex gap-1">
-              {currentLetters.slice(0, word1Length).map((letter, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => setCurrentPosition(idx)}
-                  className={`w-10 h-10 md:w-12 md:h-12 border-2 border-black rounded flex items-center justify-center text-xl font-bold cursor-pointer transition-colors ${
-                    idx === currentPosition ? 'bg-pink-300' : 'bg-white'
-                  }`}
-                >
-                  {letter}
-                </div>
-              ))}
-            </div>
-            {/* Second Word */}
-            <div className="flex gap-1">
-              {currentLetters.slice(word1Length).map((letter, idx) => (
-                <div
-                  key={idx + word1Length}
-                  onClick={() => setCurrentPosition(idx + word1Length)}
-                  className={`w-10 h-10 md:w-12 md:h-12 border-2 border-black rounded flex items-center justify-center text-xl font-bold cursor-pointer transition-colors ${
-                    idx + word1Length === currentPosition ? 'bg-pink-300' : 'bg-white'
-                  }`}
-                >
-                  {letter}
-                </div>
-              ))}
-            </div>
-          </>
-        ) : (
-          /* Single Word */
-          <div className="flex gap-1">
-            {currentLetters.map((letter, idx) => (
+        {/* Letter Boxes */}
+        <div className="flex flex-wrap justify-center gap-1.5 mb-8">
+          {currentLetters.map((letter, idx) => {
+            const isSelected = idx === currentPosition;
+            // Add gap after first word if there are two words
+            const isWordBreak = word2Length > 0 && idx === word1Length;
+            return (
               <div
                 key={idx}
                 onClick={() => setCurrentPosition(idx)}
-                className={`w-10 h-10 md:w-12 md:h-12 border-2 border-black rounded flex items-center justify-center text-xl font-bold cursor-pointer transition-colors ${
-                  idx === currentPosition ? 'bg-pink-300' : 'bg-white'
-                }`}
+                className={`
+                  w-10 h-10 md:w-12 md:h-12
+                  border-2 ${isSelected ? 'border-black' : 'border-black/20'}
+                  rounded-lg flex items-center justify-center
+                  text-2xl font-bold font-sans transition-all duration-100
+                  ${isSelected ? 'bg-brand-pink scale-110 z-10 shadow-neobrutalist-sm' : 'bg-white'}
+                  ${letter ? 'text-black' : 'text-transparent'}
+                  ${isWordBreak ? 'ml-3' : ''}
+                `}
               >
                 {letter}
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+            )
+          })}
+        </div>
 
-      {/* Progress Dots */}
-      <div className="flex justify-center items-center gap-2 mb-2">
-        {currentLetters.map((letter, idx) => (
-          <div
-            key={idx}
-            className={`w-3 h-3 rounded-full ${
-              letter ? 'bg-gray-900' : 'bg-gray-300'
-            }`}
-          />
-        ))}
-      </div>
-      <div className="text-center italic text-gray-800 mb-8">par</div>
-
-      {/* Action Buttons */}
-      <div className="flex justify-center gap-4 mb-12">
-        <button
-          onClick={handleHint}
-          className="px-8 py-3 bg-yellow-300 hover:bg-yellow-400 text-black font-bold italic rounded-full border-2 border-black transition-colors"
-        >
-          hints
-        </button>
-        <button
-          onClick={handleCheck}
-          className="px-8 py-3 bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold italic rounded-full border-2 border-black transition-colors"
-        >
-          check
-        </button>
+        {/* Action Buttons - Hints / Check */}
+        <div className="flex justify-center gap-3 mb-8">
+          <button
+            onClick={handleHint}
+            className="px-6 py-2 bg-white hover:bg-gray-50 text-black font-bold text-sm rounded-lg border-2 border-black/10 transition-colors"
+          >
+            HINT
+          </button>
+          <button
+            onClick={handleCheck}
+            className="px-8 py-2 bg-brand-yellow text-black font-black text-sm rounded-lg border-2 border-black shadow-neobrutalist-sm active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
+          >
+            CHECK
+          </button>
+        </div>
       </div>
 
       {/* Explanation (if solved) */}
       {showExplanation && explanation && (
         <div className="mx-4 mb-8">
-          <div className="bg-white rounded-2xl p-6 shadow-lg">
-            <h3 className="font-bold text-lg mb-2">Explanation:</h3>
-            <p className="text-gray-800">{explanation}</p>
+          <div className="bg-white border-2 border-black rounded-2xl p-6 shadow-neobrutalist">
+            <h3 className="font-bold text-lg mb-2 text-brand-dark">Explanation:</h3>
+            <p className="text-gray-800 font-serif">{explanation}</p>
           </div>
         </div>
       )}
 
-      {/* Keyboard */}
-      <div className="fixed bottom-0 left-0 right-0 bg-[#B8C9E8] pb-safe">
-        <div className="max-w-2xl mx-auto px-2 pb-4">
+      {/* Keyboard - Fixed to bottom */}
+      <div className="bg-[#B8C9E8]/95 backdrop-blur-sm pt-2 pb-6 px-1">
+        <div className="max-w-md mx-auto">
           {keyboard.map((row, rowIdx) => (
-            <div key={rowIdx} className="flex justify-center gap-1 mb-1">
+            <div key={rowIdx} className="flex justify-center gap-1 mb-1.5">
               {row.map((key) => (
                 <button
                   key={key}
                   onClick={() => handleKeyPress(key)}
-                  className="w-10 h-12 bg-white hover:bg-gray-100 rounded border border-gray-300 text-lg font-semibold transition-colors"
+                  className="w-8 h-12 flex-1 bg-white rounded-[4px] shadow-sm text-lg font-bold text-brand-dark active:bg-gray-200 transition-colors"
                 >
                   {key}
                 </button>
@@ -309,7 +257,7 @@ export default function MinuteCrypticGame() {
               {rowIdx === 2 && (
                 <button
                   onClick={handleBackspace}
-                  className="w-10 h-12 bg-white hover:bg-gray-100 rounded border border-gray-300 flex items-center justify-center transition-colors"
+                  className="w-10 flex items-center justify-center bg-black/10 rounded-[4px] text-brand-dark font-bold active:bg-black/20"
                 >
                   ⌫
                 </button>

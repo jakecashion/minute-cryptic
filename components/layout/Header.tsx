@@ -1,70 +1,30 @@
 "use client"
 
 import Link from "next/link"
-import { useSession, signOut } from "next-auth/react"
-import Button from "@/components/ui/Button"
+import { useSession } from "next-auth/react"
+import { Menu } from "lucide-react"
 
 export default function Header() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
 
   return (
-    <header className="border-b bg-white">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-blue-600">
-            Abbie Cryptic
-          </Link>
+    <header className="sticky top-0 z-50 bg-[#B8C9E8]/80 backdrop-blur-md border-b border-black/5">
+      <div className="container mx-auto px-4 h-14 flex items-center justify-between">
+        {/* Brand */}
+        <Link href="/" className="text-xl font-black tracking-tighter text-brand-dark">
+          Abbie Cryptic
+        </Link>
 
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
-            <Link
-              href="/solve"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Solve
+        {/* Simple Menu Trigger (or Auth) */}
+        <div className="flex items-center gap-4">
+          {session?.user?.role === "ADMIN" && (
+            <Link href="/admin" className="text-sm font-bold text-brand-dark hover:opacity-70">
+              Admin
             </Link>
-            <Link
-              href="/guide"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              Guide
-            </Link>
-            <Link
-              href="/us"
-              className="text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              About
-            </Link>
-            {session?.user?.role === "ADMIN" && (
-              <Link
-                href="/admin"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Admin
-              </Link>
-            )}
-          </nav>
-
-          {/* Auth - Only show for logged in admins */}
-          <div className="flex items-center gap-3">
-            {status === "loading" ? (
-              <div className="h-10 w-20 bg-gray-200 animate-pulse rounded" />
-            ) : session ? (
-              <>
-                <span className="text-sm text-gray-600 hidden sm:inline">
-                  {session.user?.name || session.user?.email}
-                </span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => signOut({ callbackUrl: "/" })}
-                >
-                  Sign Out
-                </Button>
-              </>
-            ) : null}
-          </div>
+          )}
+          <button className="p-2 hover:bg-black/5 rounded-full transition-colors">
+            <Menu className="w-6 h-6 text-brand-dark" />
+          </button>
         </div>
       </div>
     </header>
