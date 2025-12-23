@@ -58,10 +58,10 @@ export default function Home() {
         {/* CTA */}
         <div className="mt-16 text-center">
           <p className="text-gray-600 mb-4">
-            Ready to get started?
+            Ready to solve today's puzzle?
           </p>
-          <Link href="/register">
-            <Button size="lg">Create Free Account</Button>
+          <Link href="/solve">
+            <Button size="lg">Start Solving</Button>
           </Link>
         </div>
       </Container>

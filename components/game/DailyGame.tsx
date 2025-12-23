@@ -72,39 +72,62 @@ export default function DailyGame() {
       return
     }
 
-    if (!session) {
-      showToast("Please log in to submit answers", "error")
-      return
-    }
-
     setIsSubmitting(true)
 
     try {
-      const res = await fetch("/api/puzzles/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          puzzleId: puzzle?.id,
-          answer: answer.trim(),
-          timeSpent
+      // If no session, just validate client-side without saving
+      if (!session) {
+        const res = await fetch("/api/puzzles/validate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            puzzleId: puzzle?.id,
+            answer: answer.trim()
+          })
         })
-      })
 
-      const data = await res.json()
+        const data = await res.json()
 
-      if (res.ok) {
-        if (data.isCorrect) {
-          showToast("Correct! Well done!", "success")
-          setSolution({ isCorrect: true, userAnswer: answer })
-          if (data.explanation) {
-            setExplanation(data.explanation)
-            setShowExplanation(true)
+        if (res.ok) {
+          if (data.isCorrect) {
+            showToast("Correct! Well done!", "success")
+            setSolution({ isCorrect: true, userAnswer: answer })
+            if (data.explanation) {
+              setExplanation(data.explanation)
+              setShowExplanation(true)
+            }
+          } else {
+            showToast("Not quite right. Try again!", "error")
           }
-        } else {
-          showToast("Not quite right. Try again!", "error")
         }
       } else {
-        showToast(data.error || "Failed to submit answer", "error")
+        // If logged in, save the solution
+        const res = await fetch("/api/puzzles/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            puzzleId: puzzle?.id,
+            answer: answer.trim(),
+            timeSpent
+          })
+        })
+
+        const data = await res.json()
+
+        if (res.ok) {
+          if (data.isCorrect) {
+            showToast("Correct! Well done!", "success")
+            setSolution({ isCorrect: true, userAnswer: answer })
+            if (data.explanation) {
+              setExplanation(data.explanation)
+              setShowExplanation(true)
+            }
+          } else {
+            showToast("Not quite right. Try again!", "error")
+          }
+        } else {
+          showToast(data.error || "Failed to submit answer", "error")
+        }
       }
     } catch (error) {
       showToast("Failed to submit answer", "error")
@@ -176,24 +199,18 @@ export default function DailyGame() {
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
                 placeholder="Enter your answer..."
-                disabled={!session || isSubmitting}
+                disabled={isSubmitting}
                 autoFocus
               />
 
-              {!session ? (
-                <p className="text-sm text-gray-600 text-center">
-                  Please log in to submit your answer
-                </p>
-              ) : (
-                <Button
-                  type="submit"
-                  className="w-full"
-                  isLoading={isSubmitting}
-                  disabled={!answer.trim()}
-                >
-                  Submit Answer
-                </Button>
-              )}
+              <Button
+                type="submit"
+                className="w-full"
+                isLoading={isSubmitting}
+                disabled={!answer.trim()}
+              >
+                Submit Answer
+              </Button>
             </form>
           )}
         </div>

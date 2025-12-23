@@ -19,9 +19,7 @@ export default withAuth(
         if (req.nextUrl.pathname.startsWith("/admin")) {
           return token?.role === "ADMIN"
         }
-        if (req.nextUrl.pathname.startsWith("/solve")) {
-          return !!token
-        }
+        // Remove auth requirement for /solve - anyone can access
         return true
       }
     }
@@ -29,5 +27,5 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: ["/admin/:path*", "/solve"]
+  matcher: ["/admin/:path*"]
 }

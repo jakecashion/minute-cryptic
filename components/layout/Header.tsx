@@ -46,7 +46,7 @@ export default function Header() {
             )}
           </nav>
 
-          {/* Auth */}
+          {/* Auth - Only show for logged in admins */}
           <div className="flex items-center gap-3">
             {status === "loading" ? (
               <div className="h-10 w-20 bg-gray-200 animate-pulse rounded" />
@@ -63,20 +63,7 @@ export default function Header() {
                   Sign Out
                 </Button>
               </>
-            ) : (
-              <>
-                <Link href="/login">
-                  <Button variant="ghost" size="sm">
-                    Log In
-                  </Button>
-                </Link>
-                <Link href="/register">
-                  <Button variant="primary" size="sm">
-                    Sign Up
-                  </Button>
-                </Link>
-              </>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
