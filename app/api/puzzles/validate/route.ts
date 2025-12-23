@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { prisma } from "@/lib/db"
+import { puzzles } from "@/data/puzzles"
 import { validateAnswer } from "@/lib/puzzle-validator"
 
 export const dynamic = 'force-dynamic'
@@ -15,10 +15,8 @@ export async function POST(request: Request) {
       )
     }
 
-    // Get the puzzle with the correct answer
-    const puzzle = await prisma.puzzle.findUnique({
-      where: { id: puzzleId }
-    })
+    // Find the puzzle
+    const puzzle = puzzles.find(p => p.id === puzzleId)
 
     if (!puzzle) {
       return NextResponse.json(
