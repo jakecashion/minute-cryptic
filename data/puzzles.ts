@@ -10,7 +10,15 @@ export interface Puzzle {
 export const puzzles: Puzzle[] = [
   {
     id: "puzzle-001",
-    date: "2025-12-23",
+    date: "2025-12-25",
+    clue: "Perhaps peace offering confused with danger to italian locals? (5,6)",
+    answer: "OLIVEGARDEN",
+    explanation: "PEACE (peace offering) + DANGER (danger) confused (anagram indicator) = OLIVE GARDEN (Italian locals)",
+    difficulty: 2
+  },
+  {
+    id: "puzzle-002",
+    date: "2025-12-26",
     clue: "Perhaps peace offering confused with danger to italian locals? (5,6)",
     answer: "OLIVEGARDEN",
     explanation: "PEACE (peace offering) + DANGER (danger) confused (anagram indicator) = OLIVE GARDEN (Italian locals)",
